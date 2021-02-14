@@ -6,6 +6,12 @@ const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
 const AllbuttonsPart = document.getElementById('allbuttons');
 const BackButton = document.getElementById('back-button');
+const TrogoleSpener = document.getElementById('loadingSpinner');
+
+const loadingSpinner = function () {
+  TrogoleSpener.classList.toggle('d-none');
+  imagesArea.classList.toggle('d-none');
+}
 // selected image 
 let sliders = [];
 
@@ -34,9 +40,11 @@ const showImages = (images) => {
       gallery.appendChild(div)
     })
   }
+  loadingSpinner();
 }
 
 const getImages = (query) => {
+  loadingSpinner();
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
@@ -144,6 +152,7 @@ searchBtn.addEventListener('click', function () {
   const search = document.getElementById('search');
   getImages(search.value)
   sliders.length = 0;
+  search.value = '';
 })
 
 sliderBtn.addEventListener('click', function () {
