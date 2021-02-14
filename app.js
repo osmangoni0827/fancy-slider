@@ -65,6 +65,7 @@ const selectItem = (event, img) => {
   else {
     sliders.pop();
   }
+  document.getElementById('TotalSelect').innerText = sliders.length;
 }
 var timer
 const createSlider = () => {
@@ -150,7 +151,7 @@ searchBtn.addEventListener('click', function () {
   document.querySelector('.main').style.display = 'none';
   clearInterval(timer);
   const search = document.getElementById('search');
-  if(search.value!==''){getImages(search.value)}
+  if (search.value !== '') { getImages(search.value) }
   sliders.length = 0;
   search.value = '';
 })
