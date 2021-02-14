@@ -150,7 +150,7 @@ searchBtn.addEventListener('click', function () {
   document.querySelector('.main').style.display = 'none';
   clearInterval(timer);
   const search = document.getElementById('search');
-  getImages(search.value)
+  if(search.value!==''){getImages(search.value)}
   sliders.length = 0;
   search.value = '';
 })
